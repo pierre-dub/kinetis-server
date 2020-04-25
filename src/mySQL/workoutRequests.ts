@@ -64,7 +64,7 @@ export function addWorkout(id:number, title: string, description: string, materi
             response = {
                 status: "error",
                 data: null, /* or optional error payload */
-                message: "Error has occurred : "
+                message: "Error has occurred : "+ err
             }
             console.error(err);
         }
