@@ -9,6 +9,10 @@ router.post('/', (req: Request, res: Response) => {
     workoutController.create(req, res);
 });
 
+router.post('/find', (req: Request, res: Response) => {
+    workoutController.find(req, res);
+});
+
 router.get('/', (req: Request, res: Response) => {
     workoutController.read(req, res);
 });
