@@ -1,15 +1,16 @@
 import { Request, Response } from 'express';
 import { CrudController } from '../CrudController';
-import {addWorkout} from "../../mySQL/workoutRequests";
+import {addWorkout, getWorkout} from "../../db/workoutRequests";
 
 export class WorkoutController extends CrudController {
     public create(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {
-        res.json(addWorkout(req.body.id,req.body.title,req.body.description,req.body.materiel,req.body.repetition,req.body.obj));
+        console.log("/POST Workout");
+        addWorkout(req.body.id,req.body.title,req.body.description,req.body.materiel,req.body.repetition,req.body.obj).then((response) => {res.json(response)})
     }
 
     public read(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {
-        console.log("touched Workout")
-        res.json({ message: 'GET /workout request received' });
+        console.log("/GET Workout");
+        getWorkout().then((response) => {res.json(response)})
     }
 
     public update(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {

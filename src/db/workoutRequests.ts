@@ -49,33 +49,44 @@ export function clear(){
     });
 }
 
-export function getWorkout() {
-    db.all("SELECT * FROM WORKOUT", function (err: any, res: any) {
-        console.error(res)
-    });
+export async function getWorkout() {
+    let response: any;
+    return new Promise((resolve, reject) => {
+         db.all("SELECT * FROM WORKOUT", async function (err: any, res: any) {
+            if (err) {
+                reject(err);
+                console.error(err);
+            }
+            else {
+                response = {
+                    status: "success",
+                    data: res,
+                    message: "GET success"
+                }
+                resolve(response)
+            }
+        })
+    })
 }
 
 export function addWorkout(id:number, title: string, description: string, materiel: string, repetition: string, objectif: string) {
-    db.run("INSERT INTO WORKOUT VALUES ($id, $title, $description, $materiel, $repetition, $obj)",
+    let response:any
+    return new Promise((resolve, reject) => {
+        db.run("INSERT INTO WORKOUT VALUES ($id, $title, $description, $materiel, $repetition, $obj)",
     {$id:id, $title:title ,$description:description, $materiel:materiel, $repetition:repetition, $obj:objectif},
          function (err:any) {
-        let response:any
-        if (err) {
-            response = {
-                status: "error",
-                data: null, /* or optional error payload */
-                message: "Error has occurred : "+ err
+            if (err) {
+                console.error(err)
+                reject(err);
             }
-            console.error(err);
-        }
-        else {
-            response = {
-                status: "success",
-                data: null,
-                message: "Success" /* Or optional success message */
+            else {
+                response = {
+                    status: "success",
+                    data: null,
+                    message: "POST success" /* Or optional success message */
+                }
             }
-        }
-        console.log(response)
-        return response;
+            resolve(response)
+        })
     })
 }
