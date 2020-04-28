@@ -14,6 +14,7 @@ export async function getWorkout() {
                     data: res,
                     message: "GET success"
                 }
+                console.log(response)
                 resolve(response)
             }
         })
