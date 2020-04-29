@@ -6,11 +6,11 @@ export const router = express.Router({
 });
 
 router.post('/', (req: Request, res: Response) => {
-    loginController.create(req, res);
+    loginController.verify(req, res);
 });
 
-router.post('/find', (req: Request, res: Response) => {
-    loginController.find(req, res);
+router.post('/new', (req: Request, res: Response) => {
+    loginController.create(req, res);
 });
 
 router.get('/', (req: Request, res: Response) => {
