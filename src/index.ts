@@ -1,11 +1,10 @@
 import express from 'express';
 import { PORT } from './config/constants';
-import {loginRouter, userRouter, workoutRouter} from './routes';
+import {loginRouter, workoutRouter} from './routes';
 import {fillUserTable} from "./db/Login/userTable";
 
 const app = express();
 app.use(express.json());
-app.use('/users', userRouter);
 app.use('/workout', workoutRouter);
 app.use('/login', loginRouter);
 
