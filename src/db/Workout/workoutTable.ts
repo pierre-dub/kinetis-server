@@ -1,20 +1,20 @@
 import {db} from "../../index";
 import {addWorkout} from "./addWorkout";
 
-export function init() {
-    db.run("CREATE TABLE IF NOT EXISTS WORKOUT(ID integer primary key not null, TITLE text, DESCRIPTION text, MATERIEL text, REPETITION text, OBJ text)",
+export const createWorkoutTable = async () => {
+    await db.run("CREATE TABLE IF NOT EXISTS WORKOUT(ID integer primary key not null, TITLE text, DESCRIPTION text, MATERIEL text, REPETITION text, OBJ text)",
         {},
         function (err: any) {
             if (err)
                 console.error(err)
             else
-                console.log("WORKOUT init")
+                console.log("CREATE WORKOUT")
         });
 }
 
-export async function fillDatabase() {
-    await clear();
-    await init();
+export const fillWorkoutTable = async () => {
+    await dropWorkoutTable();
+    await createWorkoutTable();
     await addWorkout(
         1,
         'Jump Squat',
@@ -41,11 +41,11 @@ export async function fillDatabase() {
     );
 }
 
-export function clear(){
+export const dropWorkoutTable = async () => {
     db.run("DROP TABLE  IF EXISTS WORKOUT ", {},function (err:any) {
         if(err)
             console.error(err)
         else
-            console.log("WORKOUT cleared")
+            console.log("DROP WORKOUT")
     });
 }
