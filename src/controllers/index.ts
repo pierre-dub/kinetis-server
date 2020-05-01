@@ -1,10 +1,10 @@
 import { WorkoutController} from "./Workout/Workout";
-import {LoginController} from "./Login/Login";
+import {UserController} from "./User/User";
 
 const workoutController = new WorkoutController();
-const loginController = new LoginController()
+const userController = new UserController();
 
 export {
     workoutController,
-    loginController
+    userController,
 };

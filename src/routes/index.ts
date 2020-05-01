@@ -1,7 +1,7 @@
 import { router as workoutRouter } from './Workout/Workout'
-import { router as loginRouter } from './Login/Login'
+import { router as userRouter } from './User/User'
 
 export {
     workoutRouter,
-    loginRouter
+    userRouter,
 };

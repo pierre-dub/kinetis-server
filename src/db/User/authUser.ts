@@ -1,6 +1,6 @@
 import {db} from "../../index";
 
-export function authentication(username:string, password: string) {
+export function authUser(username:string, password: string) {
     let response:any
     return new Promise((resolve, reject) => {
         let res = db.all("SELECT * FROM USER WHERE USERNAME=$username AND PASSWORD=$password",
