@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { CrudController } from '../CrudController';
-import {addWorkout} from "../../db/Workout/postWorkout";
-import {getWorkout, getWorkoutWithTitle} from "../../db/Workout/getWorkout";
+import {addWorkout} from "../../db/Workout/addWorkout";
+import {getWorkout} from "../../db/Workout/getWorkout";
+import {getWorkoutWithTitle} from "../../db/Workout/getWorkoutWithTitle";
 
 export class WorkoutController extends CrudController {
     public create(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {

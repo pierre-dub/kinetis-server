@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
 import { CrudController } from '../CrudController';
-import {addWorkout} from "../../db/Workout/postWorkout";
-import {getWorkout, getWorkoutWithTitle} from "../../db/Workout/getWorkout";
 import {authentication} from "../../db/Login/authentication";
 import {addUser} from "../../db/Login/addUser";
 

@@ -1,5 +1,5 @@
 import {db} from "../../index";
-import {addWorkout} from "./postWorkout";
+import {addWorkout} from "./addWorkout";
 
 export function init() {
     db.run("CREATE TABLE IF NOT EXISTS WORKOUT(ID integer primary key not null, TITLE text, DESCRIPTION text, MATERIEL text, REPETITION text, OBJ text)",
