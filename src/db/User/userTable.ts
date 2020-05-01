@@ -1,47 +1,32 @@
 import {db} from "../../index";
 import {addUser} from "./addUser";
 
-export function init() {
-    db.run("CREATE TABLE IF NOT EXISTS USER (USERNAME text primary key not null,PASSWORD text,EMAIL text)",
+export const createUserTable = async () => {
+    await db.run("CREATE TABLE IF NOT EXISTS USER (ID integer primary key not null, SURNAME text, NAME text,PASSWORD text,EMAIL text,KINE boolean)",
         {},
         function (err: any) {
             if (err)
                 console.error(err)
             else
-                console.log("USER init")
+                console.log("CREATE USER")
         });
 }
 
-export async function fillUserTable() {
+export const fillUserTable = async () => {
     try {
-        await clear();
-        await init();
-        await addUser(
-            'pierre1',
-            'pierre74',
-            'pierre@'
-        );
-        await addUser(
-            'pierre2',
-            'pierre74',
-            'pierre@'
-        );
-        await addUser(
-            'pierre3',
-            'pierre74',
-            'pierre@'
-        );
-    }
-    catch (e) {
+       await dropUserTable();
+       await createUserTable();
+       await addUser("Dubreuil","Pierre","@","a",false);
+    } catch (e) {
         console.log(e)
     }
 }
 
-export function clear(){
-    db.run("DROP TABLE  IF EXISTS USER ", {},function (err:any) {
-        if(err)
+export const dropUserTable = async () => {
+    await db.run("DROP TABLE  IF EXISTS USER ", {}, function (err: any) {
+        if (err)
             console.error(err)
         else
-            console.log("USER cleared")
+            console.log("DROP USER")
     });
 }

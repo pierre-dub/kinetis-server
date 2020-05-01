@@ -1,10 +1,10 @@
 import {db} from "../../index";
 
-export function authUser(username:string, password: string) {
+export function authUser(email:string, password: string) {
     let response:any
     return new Promise((resolve, reject) => {
-        let res = db.all("SELECT * FROM USER WHERE USERNAME=$username AND PASSWORD=$password",
-            {$username:username, $password: password},
+        db.all("SELECT * FROM USER WHERE EMAIL=$email AND PASSWORD=$password",
+            {$email:email, $password: password},
             async function (err:any,res:any) {
                 if (err) {
                     console.error(err)

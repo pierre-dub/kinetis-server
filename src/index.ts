@@ -15,6 +15,7 @@ export const db = new sqlite.Database("./db/kinetisDatabase.db",sqlite.OPEN_READ
         console.log('Connected to the chinook database.');
     }
 })
+
 app.listen(4000, "192.168.1.20",10000,() => {
     console.log(`Server is listening on port ${PORT}`);
 })
