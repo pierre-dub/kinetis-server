@@ -1,11 +1,13 @@
 import express from 'express';
 import { PORT } from './config/constants';
-import {userRouter, workoutRouter} from './routes';
+import {imageRouter, userRouter, workoutRouter} from './routes';
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 app.use('/workout', workoutRouter);
 app.use('/user', userRouter);
+app.use('/image',imageRouter);
 
 const sqlite = require("sqlite3").verbose();
 export const db = new sqlite.Database("./db/kinetisDatabase.db",sqlite.OPEN_READWRITE, (err:any) => {

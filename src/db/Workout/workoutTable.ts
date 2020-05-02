@@ -13,8 +13,8 @@ export const createWorkoutTable = async () => {
 }
 
 export const fillWorkoutTable = async () => {
-    await dropWorkoutTable();
-    await createWorkoutTable();
+    //await dropWorkoutTable();
+    //await createWorkoutTable();
     await addWorkout(
         1,
         'Jump Squat',
