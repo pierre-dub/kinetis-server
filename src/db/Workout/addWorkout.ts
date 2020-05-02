@@ -5,7 +5,7 @@ export function addWorkout(id:number, title: string, description: string, materi
     return new Promise((resolve, reject) => {
         db.run("INSERT INTO WORKOUT VALUES ($id, $title, $description, $materiel, $repetition, $obj)",
             {$id:id, $title:title ,$description:description, $materiel:materiel, $repetition:repetition, $obj:objectif},
-            function (err:any) {
+            async function (err:any, res:any) {
                 if (err) {
                     console.error(err)
                     reject(err);
@@ -13,7 +13,7 @@ export function addWorkout(id:number, title: string, description: string, materi
                 else {
                     response = {
                         status: "success",
-                        data: null,
+                        data: `${this.lastID}`,
                         message: "POST success" /* Or optional success message */
                     }
                 }
