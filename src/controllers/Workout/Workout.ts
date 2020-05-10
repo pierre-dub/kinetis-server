@@ -3,6 +3,7 @@ import { CrudController } from '../CrudController';
 import {addWorkout} from "../../db/Workout/addWorkout";
 import {getWorkout} from "../../db/Workout/getWorkout";
 import {getWorkoutWithTitle} from "../../db/Workout/getWorkoutWithTitle";
+import {deleteWorkout} from "../../db/Workout/deleteWorkout";
 
 export class WorkoutController extends CrudController {
     public create(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {
@@ -25,6 +26,7 @@ export class WorkoutController extends CrudController {
     }
 
     public delete(req: Request<import("express-serve-static-core").ParamsDictionary>, res: Response): void {
-        throw new Error("Method not implemented.");
+        console.log("/DELETE Workout")
+        deleteWorkout(req.body.id).then((response)=>{res.json(response)})
     }
 }
