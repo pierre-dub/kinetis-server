@@ -20,6 +20,7 @@ export function addWorkout(id:number, title: string, description: string, materi
                 else {
                     response = {
                         status: "success",
+                        // @ts-ignore
                         data: `${this.lastID}`,
                         message: "POST success"
                     }
