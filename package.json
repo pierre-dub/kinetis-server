@@ -20,6 +20,7 @@
   "homepage": "https://github.com/pierre-dub/kinetis-server#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "expo-font": "^8.1.1",
     "express": "^4.17.1",
     "sqlite3": "^4.1.1",
     "typescript": "^3.8.3"
