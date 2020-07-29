@@ -1,5 +1,4 @@
 import express from 'express';
-import { PORT } from './config/constants';
 import {imageRouter, userRouter, workoutRouter} from './routes';
 
 const app = express();
@@ -18,6 +17,6 @@ export const db = new sqlite.Database("./db/kinetisDatabase.db",sqlite.OPEN_READ
     }
 })
 
-app.listen(4000, "192.168.1.20",10000,() => {
-    console.log(`Server is listening on port ${PORT}`);
+app.listen(process.env.PORT,() => {
+    console.log(`Server is listening on port `+ process.env.PORT);
 })
