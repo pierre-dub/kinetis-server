@@ -22,7 +22,7 @@
     "body-parser": "^1.19.0",
     "expo-font": "^8.1.1",
     "express": "^4.17.1",
-    "sqlite3": "^4.1.1",
+    "sqlite3": "^4.2.0",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
